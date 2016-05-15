@@ -1,5 +1,5 @@
 {
-    "name": "authorStats",
+    "name": "author-stats",
     "version": "1.0.0",
     "description": "Fetch the daily/weekly/monthly download stats for your NPM packages",
     "author": "Mark Moffat <mrvautin@gmail.com>",

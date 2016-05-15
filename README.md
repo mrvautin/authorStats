@@ -5,7 +5,7 @@ Fetch the daily/weekly/monthly download stats for all your NPM packages/modules 
 ## Installation
 
 ```
-# npm install authorStats -g
+# npm install author-stats -g
 ```
 
 ## Usage
