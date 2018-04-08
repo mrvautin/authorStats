@@ -1,0 +1,50 @@
+{
+    "name": "author-stats",
+    "version": "1.0.1",
+    "description": "Fetch the daily/weekly/monthly download stats for your NPM packages",
+    "author": "Mark Moffat <hi@markmoffat.com>",
+    "private": false,
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mrvautin/authorStats"
+    },
+    "bugs": {
+        "url": "https://github.com/mrvautin/authorStats/issues"
+    },
+    "bin": {
+        "authorStats": "index.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "npm",
+        "stats",
+        "packages",
+        "modules",
+        "fetch",
+        "downloads",
+        "user",
+        "author"
+    ],
+    "license": "MIT",
+    "dependencies": {
+        "async": "^2.0.0-rc.3",
+        "cli-spinner": "^0.2.5",
+        "cli-table": "^0.3.1",
+        "colors": "^1.1.2",
+        "commander": "^2.9.0",
+        "lodash": "^4.17.5",
+        "npm-registry": "^0.1.13"
+    },
+    "devDependencies": {
+        "eslint": "^3.19.0",
+        "eslint-config-airbnb-base": "^12.1.0",
+        "eslint-config-standard": "^10.2.1",
+        "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-node": "^5.2.1",
+        "eslint-plugin-promise": "^3.6.0",
+        "eslint-plugin-standard": "^3.0.1"
+    }
+}
