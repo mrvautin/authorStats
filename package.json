@@ -1,6 +1,6 @@
 {
     "name": "author-stats",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Fetch the daily/weekly/monthly download stats for your NPM packages",
     "author": "Mark Moffat <hi@markmoffat.com>",
     "private": false,
