@@ -16,14 +16,51 @@ const version = pkg.version;
 commander
     .version(version)
     .usage('<username>')
+    .option('-s, --sort <item>', 'Sort by column name')
+    .option('-o, --order <item>', 'Sort by column order (asc, desc)')
     .parse(process.argv);
 
 // get the author arg
-let author = commander.args;
+let author = commander.args[0];
 
 // check author arg has been specified and throw error
 if(author === ''){
     commander.outputHelp(make_red);
+    process.exit(1);
+}
+
+// Check sorting option
+let sortBy;
+if(commander.sort){
+    sortBy = commander.sort;
+}
+// Validate sort
+const valid_columns = [
+    'name',
+    'day',
+    'week',
+    'month',
+    'dependants'
+];
+// If sortby value not valid
+if(commander.sort && !valid_columns.includes(sortBy)){
+    console.error(colors.red(`ERROR: Sort column is not valid. Pleease use: ${valid_columns.join(', ')}`));
+    process.exit(1);
+}
+
+// Check order option
+let orderBy = '';
+if(commander.order){
+    orderBy = commander.order;
+}
+// Validate sort
+const orderby_values = [
+    'asc',
+    'desc'
+];
+// If sortby value not valid
+if(commander.order && !orderby_values.includes(orderBy)){
+    console.error(colors.red(`ERROR: Order column is not valid. Pleease use: ${orderby_values.join(', ')}`));
     process.exit(1);
 }
 
@@ -91,8 +128,33 @@ npm.users.list(author.toString(), (err, userPackages) => {
             process.exit(1);
         }
 
-        // output the table and stop the spinner
-        const sortedPackages = _.sortBy(tableObject, 'lastMonth').reverse();
+        // Setup the sorting
+        switch(sortBy){
+            case'name':
+                sortBy = 'name';
+                break;
+            case'day':
+                sortBy = 'lastDay';
+                break;
+            case'week':
+                sortBy = 'lastWeek';
+                break;
+            case'month':
+                sortBy = 'lastMonth';
+                break;
+            case'dependants':
+                sortBy = 'dependants';
+                break;
+            default:
+                sortBy = 'lastMonth';
+                break;
+        };
+
+        const sortedPackages = _.sortBy(tableObject, sortBy);
+        if(orderBy === '' || orderBy === 'desc'){
+            sortedPackages.reverse();
+        }
+
         console.log('\n');
         let totalDay = 0;
         let totalWeek = 0;
@@ -121,6 +183,7 @@ npm.users.list(author.toString(), (err, userPackages) => {
             colors.green(totalDependants)
         ]);
 
+        // output the table and stop the spinner
         console.log(table.toString().green);
         spinner.stop();
     });
