@@ -24,7 +24,7 @@ commander
 let author = commander.args[0];
 
 // check author arg has been specified and throw error
-if(author === ''){
+if(!author || author === ''){
     commander.outputHelp(make_red);
     process.exit(1);
 }
