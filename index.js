@@ -16,8 +16,8 @@ const version = pkg.version;
 commander
     .version(version)
     .usage('<username>')
-    .option('-s, --sort <item>', 'Sort by column name')
-    .option('-o, --order <item>', 'Sort by column order (asc, desc)')
+    .option('-s, --sort <value>', 'Sort by column name')
+    .option('-o, --order <value>', 'Sort by column order (asc, desc)')
     .parse(process.argv);
 
 // get the author arg
